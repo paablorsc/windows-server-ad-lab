@@ -1,26 +1,30 @@
-# Enterprise Network & Active Directory Lab
-
-This project demonstrates the design and implementation of a Windows Server-based IT environment using Active Directory and related network services.
-
----
+# Windows Server Active Directory Lab
 
 ## Overview
 
-The goal of this project was to simulate a small company infrastructure and manage users, computers, and resources from a centralized server.
+This project demonstrates the setup of a Windows Server environment using Active Directory.
 
-The environment was built in a virtual lab using VMware Workstation.
+The goal was to manage users, computers, and network resources from a central server in a virtual lab.
 
 ---
 
-## Technologies Used
+## Key Features
+
+- Active Directory domain setup
+- Centralized user and group management
+- Group Policy configuration
+- Network services (DNS, DHCP)
+- File sharing and network drives
+- Remote access (RDP)
+- Network printer configuration
+- Security testing (Nmap, Wireshark, Nessus, Metasploit)
+
+---
+
+## Environment
 
 - Windows Server (Domain Controller)
-- Active Directory Domain Services (AD DS)
-- DNS
-- DHCP
-- Group Policy (GPO)
-- File Sharing
-- Windows 10 Clients
+- Windows 10 workstations
 - Kali Linux (security testing)
 - VMware Workstation
 
@@ -30,68 +34,165 @@ The environment was built in a virtual lab using VMware Workstation.
 
 - Network: 192.168.10.0/24
 - Server IP: 192.168.10.10
-- DHCP Range: 192.168.10.100 – 192.168.10.200
-- DNS Server: 192.168.10.10
+- DHCP enabled for clients
+- DNS configured on server
 
 ---
 
-## Environment Structure
+## Active Directory
 
-- 1 Server (CORELINE-SERVER)
-  - Domain Controller
-  - DNS & DHCP Server
-  - File Server
+Active Directory was installed and configured.
 
-- 2 Workstations
-  - CORELINE-W10-01
-  - CORELINE-W10-02
+Users and groups were created for centralized management.
 
-- 1 Kali Linux Machine
-  - Used for security testing
+- Domain: coreline.local
+- Users added to groups
+- Permissions managed through groups
+
+![Active Directory - users and groups](https://github.com/user-attachments/assets/cf0497b4-4011-4d88-9c8a-165884fea7c3)
+
+*Users and groups created in Active Directory*
+
+
+![Active Directory - structure](https://github.com/user-attachments/assets/aae0be35-24f5-4be7-ad11-c40497dae006)
+
+*Organizational structure inside Active Directory*
 
 ---
 
-## Features Implemented
+## Group Policy
 
-- Active Directory domain (coreline.local)
-- User and group management
-- Group Policy configuration
-- Shared folders and network drives
-- Domain-joined workstations
-- Remote Desktop access
-- Network printer setup
-- Windows Server Backup
+A Group Policy Object (GPO) was created to manage workstation settings and security.
+
+Configuration:
+
+- GPO name: Workstation Security GPO  
+- Linked to domain  
+- Applied to domain computers  
+
+Security settings:
+
+- Password policy  
+- Firewall enabled  
+- Automatic updates  
+- User restrictions  
+
+The policy allows centralized control of user and system settings.
+
+![Group Policy Management](https://github.com/user-attachments/assets/19ad8cec-6a13-433a-ac49-8c5dadc0bb95)
+*Workstation Security GPO configured in Group Policy Management*
+
+---
+
+## File Sharing
+
+Shared folders were created on the server.
+
+- Central file storage
+- Access controlled using groups
+- Network drives mapped on clients
+
+![File Sharing](https://github.com/user-attachments/assets/1c71325f-7087-49d8-80a4-abb6a4783229)
+*Shared folders configured on the server*
+
+---
+
+## Domain Join
+
+Workstations were joined to the domain.
+
+- Users can log in with domain accounts
+- Central authentication enabled
+
+![Domain Join](https://github.com/user-attachments/assets/e02ecf3c-eceb-40ba-8805-51febd7bd9ec)
+
+*Workstation successfully joined to the domain*
+
+---
+
+## Remote Access
+
+Remote Desktop was enabled on the server.
+
+- Server can be accessed remotely
+- Admin control from another machine
+
+![Remote Desktop](https://github.com/user-attachments/assets/b1e81a16-1e66-4b13-9243-20ab124424f0)
+
+*Remote Desktop connection to the server*
+
+---
+
+## Network Printer
+
+A network printer was added using TCP/IP.
+
+- Static IP assigned
+- Shared to clients
+
+![Network Printer](https://github.com/user-attachments/assets/c2f892a4-2a3b-4137-80cc-14e0f2a60978)
+
+*Printer configured using Standard TCP/IP port*
 
 ---
 
 ## Security Testing
 
-Security analysis was performed using:
+Security tools were used to analyze the network.
 
-- Nmap (network scanning)
-- Wireshark (traffic analysis)
-- Nessus (vulnerability scanning)
-- Metasploit (security testing)
+### Nmap
 
----
+- Network scan performed
+- Open ports identified
 
-## Purpose
+![Nmap Scan](https://github.com/user-attachments/assets/afe2beb6-2a87-4eae-8f37-db9bc0cfdf36)
 
-This project was created as part of a learning process to understand:
-
-- Server administration
-- Network configuration
-- Active Directory management
-- Basic cybersecurity practices
+*Nmap scan results showing open ports*
 
 ---
 
-## Screenshots
+### Wireshark
 
-Screenshots of the environment and configurations are included in the repository.
+- Network traffic captured
+- ICMP packets analyzed
+
+![Wireshark](https://github.com/user-attachments/assets/a2e79b9d-4f9f-4eb2-a41a-46288f90dd6d)
+
+*ICMP traffic captured using Wireshark*
 
 ---
 
-## Author
+### Nessus
 
-Student project – CoreLine Solutions Ltd (simulated company)
+- Vulnerability scan performed
+- No critical issues found
+
+![Nessus Scan](https://github.com/user-attachments/assets/8bb3b376-ce6c-473e-badc-7f108110a51f)
+![Nessus Results](https://github.com/user-attachments/assets/044a1ba4-eaa9-4363-b1a3-e5459b0be0df)
+
+*Nessus vulnerability scan results*
+
+---
+
+### Metasploit
+
+- Basic service analysis performed
+- Security testing in lab environment
+
+![Metasploit](https://github.com/user-attachments/assets/90e67cb1-9184-4445-a688-3ea41bc17c3e)
+![Metasploit Console](https://github.com/user-attachments/assets/7cb863fe-fd5a-496e-8d65-12bbabe79f6c)
+
+*Metasploit used for service analysis*
+
+---
+
+## Conclusion
+
+This project demonstrates:
+
+- Active Directory setup
+- Network service configuration
+- Group Policy management
+- Basic cybersecurity testing
+
+The lab helped develop practical skills in system administration and security.
