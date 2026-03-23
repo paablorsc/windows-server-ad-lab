@@ -1,4 +1,4 @@
-# CoreLine Server Infrastructure Lab
+# Enterprise Network & Active Directory Lab
 
 This project demonstrates the design and implementation of a Windows Server-based IT environment using Active Directory and related network services.
 
